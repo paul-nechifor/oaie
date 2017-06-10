@@ -1,0 +1,28 @@
+{
+  "name": "oaie",
+  "version": "0.0.0",
+  "description": "A client for playing games with bots.",
+  "main": "src",
+  "scripts": {
+    "test": "false"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paul-nechifor/oaie.git"
+  },
+  "keywords": [
+    "bot",
+    "game",
+    "websockets"
+  ],
+  "author": "Paul Nechifor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paul-nechifor/oaie/issues"
+  },
+  "homepage": "https://github.com/paul-nechifor/oaie#readme",
+  "dependencies": {
+    "underscore": "^1.8.3",
+    "ws": "^3.0.0"
+  }
+}

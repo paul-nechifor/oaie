@@ -1,0 +1,7 @@
+oaie:
+  build: .
+  command: ["nodemon", "/app/src/index.js"]
+  volumes:
+    - ./src:/app/src
+  env_file:
+    - env.env
