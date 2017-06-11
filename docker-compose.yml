@@ -5,3 +5,10 @@ oaie:
     - ./src:/app/src
   env_file:
     - env.env
+oaie2:
+  build: .
+  command: ["nodemon", "/app/src/index.js"]
+  volumes:
+    - ./src:/app/src
+  env_file:
+    - env.env
