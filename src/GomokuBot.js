@@ -10,7 +10,7 @@ const FULL_SIZE = SIZE * SIZE;
 module.exports = class GomokuBot extends AbstractBot {
   constructor(...args) {
     super(...args);
-    this.board = _.range(FULL_SIZE).map(() => MOVE_EMPTY);
+    this.board = null;
   }
 
   getGameType() {
@@ -18,6 +18,7 @@ module.exports = class GomokuBot extends AbstractBot {
   }
 
   handleMsgStarted(msg) {
+    this.board = _.range(FULL_SIZE).map(() => MOVE_EMPTY);
     if (this.index === 0) {
       this.sendMove();
     }
@@ -25,11 +26,6 @@ module.exports = class GomokuBot extends AbstractBot {
 
   handleMsgNumberOfPlayers(msg) {
     console.log('Number of players: %d', msg.number);
-  }
-
-  handleMsgYouAre(msg) {
-    console.log('You are index:%d id:%s', msg.index, msg.id);
-    this.index = msg.index;
   }
 
   handleMsgPlayerMove(msg) {

@@ -2,10 +2,12 @@ const WebSocket = require('ws');
 const _ = require('underscore');
 
 module.exports = class AbstractBot {
-  constructor(host, room, userAgent) {
+  constructor(host, room, userAgent, nGames) {
     this.host = host;
     this.room = room;
     this.userAgent = userAgent;
+    this.nGames = nGames;
+    this.nGamesPlayed = 0;
     this.ws = new WebSocket(host);
     _.bindAll(this, 'handleOpen', 'handleMessage', 'handleClose');
   }
@@ -27,8 +29,15 @@ module.exports = class AbstractBot {
     this['handleMsg' + msg.type](msg);
   }
 
+  handleMsgYouAre(msg) {
+    console.log('You are index:%d id:%s', msg.index, msg.id);
+    this.index = msg.index;
+    this.id = msg.id;
+  }
+
   handleClose() {
     console.log('handleClose');
+    this.nGamesPlayed++;
   }
 
   send(msg) {
