@@ -7,6 +7,7 @@ module.exports = class AbstractBot {
     this.room = room;
     this.userAgent = userAgent;
     this.nGames = nGames;
+    this.index = null;
     this.nGamesPlayed = 0;
     this.ws = new WebSocket(host);
     _.bindAll(this, 'handleOpen', 'handleMessage', 'handleClose');
@@ -32,7 +33,6 @@ module.exports = class AbstractBot {
   handleMsgYouAre(msg) {
     console.log('You are index:%d id:%s', msg.index, msg.id);
     this.index = msg.index;
-    this.id = msg.id;
   }
 
   handleClose() {
@@ -50,6 +50,7 @@ module.exports = class AbstractBot {
       room: this.room,
       userAgent: this.userAgent,
       gameType: this.getGameType(),
+      nGames: this.nGames,
     });
   }
 

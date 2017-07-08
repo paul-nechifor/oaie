@@ -18,21 +18,20 @@ module.exports = class GomokuBot extends AbstractBot {
   }
 
   handleMsgStarted(msg) {
+    // Reset the board.
     this.board = _.range(FULL_SIZE).map(() => MOVE_EMPTY);
+
+    // The first player makes the move.
     if (this.index === 0) {
       this.sendMove();
     }
-  }
-
-  handleMsgNumberOfPlayers(msg) {
-    console.log('Number of players: %d', msg.number);
   }
 
   handleMsgPlayerMove(msg) {
     const {playerIndex, move, winner} = msg;
     this.board[move] = playerIndex;
 
-    if (winner !== MOVE_EMPTY) {
+    if (winner >= MOVE_BLACK) {
       console.log(`I ${winner === this.index ? 'won' : 'lost'} the game.`);
       return;
     }
