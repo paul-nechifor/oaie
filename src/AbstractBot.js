@@ -8,7 +8,6 @@ module.exports = class AbstractBot {
     this.userAgent = userAgent;
     this.nGames = nGames;
     this.index = null;
-    this.nGamesPlayed = 0;
     this.ws = new WebSocket(host);
     _.bindAll(this, 'handleOpen', 'handleMessage', 'handleClose');
   }
@@ -31,13 +30,12 @@ module.exports = class AbstractBot {
   }
 
   handleMsgYouAre(msg) {
-    console.log('You are index:%d id:%s', msg.index, msg.id);
+    console.log('You are index:%d', msg.index);
     this.index = msg.index;
   }
 
   handleClose() {
     console.log('handleClose');
-    this.nGamesPlayed++;
   }
 
   send(msg) {
