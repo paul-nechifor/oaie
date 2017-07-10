@@ -21,8 +21,7 @@ module.exports = class GomokuBot extends AbstractBot {
     // Reset the board.
     this.board = _.range(FULL_SIZE).map(() => MOVE_EMPTY);
 
-    // The first player makes the move.
-    if (this.index === 0) {
+    if (msg.playerIndex === this.index) {
       this.sendMove();
     }
   }
